@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{name}} - Resume</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: antiquewhite;
+      color: #333333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      container-type: size;
+      container-name: resume;
+    }
+
+    .header {
+      text-align: center;
+      padding-bottom: 10px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 32px;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .header .jobtitle {
+      margin: 5px 0 0;
+      font-size: 18px;
+      color: #333333;
+    }
+
+    .content {
+      display: flex;
+      margin-top: 20px;
+    }
+
+    .left-column {
+      width: 30%;
+      padding-right: 20px;
+      background-color: #DEE4EB;
+      padding: 100px 20px 100px 50px;
+    }
+
+    .right-column {
+      width: 70%;
+      padding-left: 20px;
+    }
+
+    .logo {
+      border: 1px solid #A3B2C4;
+      padding: 5px;
+    }
+
+    section>div {
+      padding-bottom: 20px;
+      border-bottom: 2px solid #A3B2C4;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      cursor: pointer;
+    }
+
+    p,
+    ul {
+      margin: 10px 0;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    a {
+      color: #000000;
+      text-decoration: none;
+      display: flex;
+      gap: 5px;
+      margin: 5px 0;
+    }
+
+    .logo img {
+      width: 200px;
+    }
+
+    .job h3 {
+      margin: 10px 0 0 0;
+      font-size: 18px;
+      color: #333333;
+    }
+
+    .job p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #666666;
+    }
+
+
+    button {
+      display: block;
+      padding: 5px 20px;
+      margin: 40px auto;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+
+
+    /* @media screen and (max-width: 786px) { */
+    @container resume (max-width: 786px) {
+      html {
+        font-size: 95%;
+      }
+
+      .left-column {
+        background-color: red;
+        padding: 50px 10px 100px 10px;
+      }
+
+      .right-column {
+        padding-left: 20px;
+      }
+
+      .logo img {
+        width: 100%;
+      }
+
+      .header h1 {
+        font-size: 28px;
+      }
+
+      .header .jobtitle {
+        font-size: 16px;
+      }
+
+      .job h3 {
+        font-size: 16px;
+      }
+
+      .contact p {
+        overflow-wrap: break-word;
+        font-size: 14px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="content">
+      <section class="left-column">
+
+        <div class="logo">
+          <img src={{image}} alt={{name}}>
+        </div>
+
+        <div class="contact">
+          <h2>Contact</h2>
+          <div>
+            <p><b>Email:</b> {{email}}</p>
+            <p><b>Phone:</b> {{phone}}</p>
+            <p><b>Location:</b> {{city}}, {{country}}</p>
+          </div>
+        </div>
+
+        <div class="skills">
+          <h2>Skills</h2>
+          <ul>
+            {{#skills}}
+            <li>{{name}}, {{rating}}</li>
+            {{/skills}}
+          </ul>
+        </div>
+
+        <div class="socials">
+          <h2>Social</h2>
+          <ul>
+            {{#socials}}
+            <li>{{.}}</li>
+            {{/socials}}
+          </ul>
+        </div>
+      </section>
+
+      <section class="right-column">
+
+        <header class="header">
+          <h1>{{name}}</h1>
+          <p class="jobtitle">{{jobtitle}}</p>
+        </header>
+
+        <div class="summary">
+          <h2>Summary</h2>
+          <p>{{summary}}</p>
+        </div>
+
+        <div class="experience">
+          <h2>Experience</h2>
+
+          <div>
+            {{#experiences}}
+            <div class="job">
+              <h3>{{experience.title}}</h3>
+              <p>{{experience.company}}, {{experience.city}}</p>
+              <p>{{experience.start}} - {{experience.end}}</p>
+              <ul>
+                {{#experience.points}}
+                <li>{{.}}</li>
+                {{/experience.points}}
+              </ul>
+            </div>
+            {{/experiences}}
+          </div>
+        </div>
+
+
+        <div class="education">
+          <h2>Education</h2>
+          <ul>
+            {{#educations}}
+            <li>{{.}}</li>
+            {{/educations}}
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="container">
+    <div class="content">
+      <section class="left-column">
+
+        <div class="logo">
+          <img src={{image}} alt={{name}}>
+        </div>
+
+        <div class="contact">
+          <h2>Contact</h2>
+          <div>
+            <p><b>Email:</b> {{email}}</p>
+            <p><b>Phone:</b> {{phone}}</p>
+            <p><b>Location:</b> {{city}}, {{country}}</p>
+          </div>
+        </div>
+
+        <div class="skills">
+          <h2>Skills</h2>
+          <ul>
+            {{#skills}}
+            <li>{{name}}, {{rating}}</li>
+            {{/skills}}
+          </ul>
+        </div>
+
+        <div class="socials">
+          <h2>Social</h2>
+          <ul>
+            {{#socials}}
+            <li>{{.}}</li>
+            {{/socials}}
+          </ul>
+        </div>
+      </section>
+
+      <section class="right-column">
+
+        <header class="header">
+          <h1>{{name}}</h1>
+          <p class="jobtitle">{{jobtitle}}</p>
+        </header>
+
+        <div class="summary">
+          <h2>Summary</h2>
+          <p>{{summary}}</p>
+        </div>
+
+        <div class="experience">
+          <h2>Experience</h2>
+
+          <div>
+            {{#experiences}}
+            <div class="job">
+              <h3>{{experience.title}}</h3>
+              <p>{{experience.company}}, {{experience.city}}</p>
+              <p>{{experience.start}} - {{experience.end}}</p>
+              <ul>
+                {{#experience.points}}
+                <li>{{.}}</li>
+                {{/experience.points}}
+              </ul>
+            </div>
+            {{/experiences}}
+          </div>
+        </div>
+
+
+        <div class="education">
+          <h2>Education</h2>
+          <ul>
+            {{#educations}}
+            <li>{{.}}</li>
+            {{/educations}}
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="container">
+    <div class="content">
+      <section class="left-column">
+
+        <div class="logo">
+          <img src={{image}} alt={{name}}>
+        </div>
+
+        <div class="contact">
+          <h2>Contact</h2>
+          <div>
+            <p><b>Email:</b> {{email}}</p>
+            <p><b>Phone:</b> {{phone}}</p>
+            <p><b>Location:</b> {{city}}, {{country}}</p>
+          </div>
+        </div>
+
+        <div class="skills">
+          <h2>Skills</h2>
+          <ul>
+            {{#skills}}
+            <li>{{name}}, {{rating}}</li>
+            {{/skills}}
+          </ul>
+        </div>
+
+        <div class="socials">
+          <h2>Social</h2>
+          <ul>
+            {{#socials}}
+            <li>{{.}}</li>
+            {{/socials}}
+          </ul>
+        </div>
+      </section>
+
+      <section class="right-column">
+
+        <header class="header">
+          <h1>{{name}}</h1>
+          <p class="jobtitle">{{jobtitle}}</p>
+        </header>
+
+        <div class="summary">
+          <h2>Summary</h2>
+          <p>{{summary}}</p>
+        </div>
+
+        <div class="experience">
+          <h2>Experience</h2>
+
+          <div>
+            {{#experiences}}
+            <div class="job">
+              <h3>{{experience.title}}</h3>
+              <p>{{experience.company}}, {{experience.city}}</p>
+              <p>{{experience.start}} - {{experience.end}}</p>
+              <ul>
+                {{#experience.points}}
+                <li>{{.}}</li>
+                {{/experience.points}}
+              </ul>
+            </div>
+            {{/experiences}}
+          </div>
+        </div>
+
+
+        <div class="education">
+          <h2>Education</h2>
+          <ul>
+            {{#educations}}
+            <li>{{.}}</li>
+            {{/educations}}
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</body>
+
+</html>
