@@ -18,14 +18,14 @@ A modern, responsive resume builder application built with Next.js. Create profe
 
 ## 🚀 Live Demo
 
-[View Live Demo](https://your-live-url-here.vercel.app)
+[View Live Demo](https://elevate-cv.vercel.app)
 
 ## 💻 Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/resume-builder.git
-cd resume-builder
+git clone https://github.com/syeda-hoorain-ali/elevatecv.git
+cd elevatecv
 ```
 
 2. Install dependencies:
@@ -71,7 +71,7 @@ pnpm dev
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/yourusername/resume-builder/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/syeda-hoorain-ali/elevatecv/issues).
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -91,9 +91,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - email@example.com
+Your Name - [@syedahorainali](https://x.com/syedahorainali) - jagjets133@gmail.com
 
-Project Link: [https://github.com/yourusername/resume-builder](https://github.com/yourusername/resume-builder)
+Project Link: [https://github.com/syeda-hoorain-ali/elevatecv](https://github.com/syeda-hoorain-ali/elevatecv)
 
 ---
 
