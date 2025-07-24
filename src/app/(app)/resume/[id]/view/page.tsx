@@ -7,12 +7,10 @@ import { notFound } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 interface Props {
-  params: Promise<{
-    id: string
-  }>
+  params: Promise<{ id: string }>
 }
 
-const page = ({ params }: Props) => {
+const Page = ({ params }: Props) => {
 
   const [resume, setResume] = useState<IResume | undefined>(undefined)
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -21,7 +19,6 @@ const page = ({ params }: Props) => {
     const fetchResume = async () => {
       const { id } = await params
       const response = await getResume(id)
-      console.log(response)
       setResume(response.resume)
       setIsLoading(false)
     }
@@ -39,4 +36,4 @@ const page = ({ params }: Props) => {
   )
 }
 
-export default page
+export default Page

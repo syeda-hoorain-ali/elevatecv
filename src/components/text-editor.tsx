@@ -13,7 +13,7 @@ import {
 } from 'react-simple-wysiwyg';
 import { SyntheticEvent } from 'react';
 
-export type ContentEditableEvent = SyntheticEvent<any, Event> & {
+export type ContentEditableEvent = SyntheticEvent<HTMLElement, Event> & {
   target: {
     name?: string;
     value: string;

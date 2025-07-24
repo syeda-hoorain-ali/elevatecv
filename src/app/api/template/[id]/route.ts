@@ -12,8 +12,6 @@ export const GET = async (request: NextRequest, { params }: IParams) => {
     try {
 
         const { id } = await params
-        console.log('template id', id);
-
         if (!id) {
             return NextResponse.json<IApiResponse>({
                 success: false,
@@ -44,7 +42,7 @@ export const GET = async (request: NextRequest, { params }: IParams) => {
         }, { status: 200 })
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         const err = error as Error
 
         return NextResponse.json<IApiResponse>({

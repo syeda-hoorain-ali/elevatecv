@@ -1,4 +1,4 @@
-"use state";
+"use client";
 
 import { motion, useAnimation, useInView } from "framer-motion"
 import { useEffect, useRef } from "react";
@@ -24,7 +24,7 @@ const Animate = ({ children, animate, fadeIn, zoomIn, delay, duration = 0.3 }: A
       mainControls.start("visible");
       slideControls.start("visible");
     }
-  }, [isInView]);
+  }, [isInView, mainControls, slideControls]);
 
   const a = {
     left: { translateX: '-100%' },

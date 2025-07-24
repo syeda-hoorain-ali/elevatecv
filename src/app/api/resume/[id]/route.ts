@@ -13,8 +13,6 @@ export const GET = async (request: NextRequest, { params }: IParams) => {
 
     try {
         const { id } = await params
-        console.log('resume id', id);
-
         if (!id) {
             return NextResponse.json<IApiResponse>({
                 success: false,
@@ -38,7 +36,7 @@ export const GET = async (request: NextRequest, { params }: IParams) => {
         }, { status: 200 })
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         const err = error as Error
 
         return NextResponse.json<IApiResponse>({
@@ -54,7 +52,6 @@ export const PATCH = async (request: NextRequest, { params }: IParams) => {
     try {
         const data: IResume = await request.json()
         const { id } = await params
-        console.log('resume id', id);
 
         if (!id) {
             return NextResponse.json<IApiResponse>({
@@ -79,7 +76,7 @@ export const PATCH = async (request: NextRequest, { params }: IParams) => {
         }, { status: 200 })
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         const err = error as Error
 
         return NextResponse.json<IApiResponse>({
@@ -94,8 +91,6 @@ export const DELETE = async (request: NextRequest, { params }: IParams) => {
 
     try {
         const { id } = await params
-        console.log('resume id', id);
-
         if (!id) {
             return NextResponse.json<IApiResponse>({
                 success: false,
@@ -117,7 +112,7 @@ export const DELETE = async (request: NextRequest, { params }: IParams) => {
         }, { status: 200 })
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         const err = error as Error
 
         return NextResponse.json<IApiResponse>({

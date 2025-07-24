@@ -15,7 +15,7 @@ const Page: React.FC = () => {
           stands out in any job application.
         </p>
         <p className="text-lg text-gray-700 mb-4">
-          Whether you're a fresh graduate, a seasoned professional, or exploring new 
+          Whether you&apos;re a fresh graduate, a seasoned professional, or exploring new 
           career opportunities, ElevateCV provides the resources you need to present 
           your skills and experience effectively.
         </p>

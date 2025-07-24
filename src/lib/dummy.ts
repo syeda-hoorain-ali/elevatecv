@@ -2,7 +2,7 @@ const dummy = {
     name: "Syeda Hoorain Ali",
     jobtitle: "Fullstack Web Developer",
     summary: "Hi! I'm Hoorain, a 13-year-old tech enthusiast and a senior student at the Governor Sindh IT Initiative (GIAIC). I have a deep passion for web development and a keen interest in emerging technologies. My journey in the tech world has been both exciting and challenging, and I've enjoyed every step of it.",
-    email: "syedahoorainali8@gmail.com",
+    email: "jagjets133@gmail.com",
     phone: "+92 3123456789",
     city: "Karachi",
     country: "Pakistan",

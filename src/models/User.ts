@@ -10,7 +10,7 @@ export interface User extends Document {
     membership: "none" | "monthly" | "yearly" | "trial_monthly" | "trial_yearly";
     subscription: {
         id: string;
-        status: String;
+        status: string;
         cancelled: false;
         renews_at: Date;
         created_at: Date;

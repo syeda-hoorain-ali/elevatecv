@@ -26,12 +26,12 @@ export const GET = async () => {
 
         return NextResponse.json<IApiResponse>({
             success: true,
-            message: "Resume saved successfully",
+            message: "Templates fetched successfully",
             templates: data
         }, { status: 200 })
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         const err = error as Error
 
         return NextResponse.json<IApiResponse>({

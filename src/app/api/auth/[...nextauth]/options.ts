@@ -33,19 +33,23 @@ export const authOptions: AuthOptions = {
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" }
       },
-      authorize: async (credentials): Promise<any> => {
-        await connectDB()
+      authorize: async (credentials) => {
+        await connectDB();
         try {
           const user = await UserModel.findOne({ email: credentials?.email });
-          if (!user) throw new Error("Invalid email")
+          if (!user) throw new Error("Invalid email");
 
           const isPasswordCorrect = await bcrypt.compare((credentials?.password || ''), user.password);
-          if (!isPasswordCorrect) throw new Error("Invalid password")
+          if (!isPasswordCorrect) throw new Error("Invalid password");
 
-          return user
+          return {
+            ...user,
+            id: String(user._id),
+            _id: String(user._id),            
+          };
         } catch (error) {
-          console.log(error)
-          throw error
+          console.error(error);
+          throw error;
         }
       },
     })

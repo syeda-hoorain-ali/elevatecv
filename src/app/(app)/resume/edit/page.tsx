@@ -14,7 +14,7 @@ const Page = () => {
 
   useEffect(() => {
     setResumeData(prev => ({ ...prev, template }));
-  }, [template])
+  }, [template, setResumeData])
 
   return (<>
     <div className={`max-w-screen-2xl bgred-700 h-full mx-auto my-8 px-4 grid gap-4 grid-cols-1 grid-rows-[auto] ${step !== 8 ? 'md:grid-cols-2 md:grid-rows-1' : 'items-center'}`}>

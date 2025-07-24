@@ -45,11 +45,9 @@ export const POST = async (request: NextRequest) => {
         formData.append("signature", signature);
         formData.append("api_key", process.env.CLOUDINARY_API_KEY);
         formData.append("timestamp", timestamp.toString());
-        console.log(signature)
 
         try {
             const response = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`, formData);
-            console.log(response.data.secure_url);
 
             return NextResponse.json({
                 success: true,
@@ -59,8 +57,8 @@ export const POST = async (request: NextRequest) => {
 
 
         } catch (error) {
-            const axiosError = error as AxiosError<any>
-            console.log(error)
+            const axiosError = error as AxiosError<{ error: { message: string } }>
+            console.error(error)
             const message = axiosError.response?.data.error.message || axiosError.message
             return NextResponse.json({
                 success: false,
@@ -70,7 +68,7 @@ export const POST = async (request: NextRequest) => {
 
 
     } catch (error) {
-        console.log(error)
+        console.error(error)
         const err = error as Error
 
         return NextResponse.json({

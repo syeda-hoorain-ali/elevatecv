@@ -25,8 +25,6 @@ export const login = async (data: { email: string, password: string }): Promise<
             password: data.password
         })
 
-        console.log(response)
-
         if (response?.error) {
             if (response.error === 'CredentialsSignin') {
                 return { success: false, message: "Incorrect email or password." }

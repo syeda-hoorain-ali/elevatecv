@@ -25,13 +25,7 @@ const Page = () => {
         {/* <TemplateCard id='a' image="/images/templates/elegant.jpg" name="Elegant" isPaid />
         <TemplateCard id='b' image="/images/templates/simple-professional.jpg" name="Simple Professional" /> */}
         {templates.map(item => (
-          <TemplateCard
-            key={item.id}
-            id={item.id}
-            image={item.image}
-            name={item.name}
-            isPaid={item.isPaid}
-          />
+          <TemplateCard key={item.id} template={item} />
         ))}
       </div>
     </div>

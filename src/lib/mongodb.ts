@@ -9,13 +9,13 @@ export const connectDB = async () => {
         return;
     }
 
-    if(!process.env.MONGODB_URI) {
+    if (!process.env.MONGODB_URI) {
         console.warn('Mongo db uri not found');
         return;
     }
 
     try {
-        const db = await mongoose.connect(process.env.MONGODB_URI)
+        const db = await mongoose.connect(process.env.MONGODB_URI, { dbName: "resume_builder" })
         connection = db.connections[0].readyState;
         console.log("Database connect successfully");
 

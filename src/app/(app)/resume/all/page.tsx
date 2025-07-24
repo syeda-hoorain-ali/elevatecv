@@ -11,11 +11,10 @@ import { resumeTitleSchema } from "@/schema/resumeTitleSchema"
 import { IResume } from "@/types/data"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { MoreVerticalIcon, CirclePlusIcon } from "lucide-react"
-import { User } from "next-auth"
 import { useSession } from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
-import { notFound, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { RWebShare } from "react-web-share"
@@ -29,22 +28,24 @@ const Page = () => {
   const [resumeList, setResumeList] = useState<IResume[]>([])
   const { data: session } = useSession()
   const router = useRouter()
-  // if (!session) return notFound()
 
-  const user: User = session?.user
-
-  useEffect(() => {
-    const fetchResumes = async () => {
-      const response = await getAllResume(user._id!)
-      setResumeList(response.resumeList || [])
-    }
-    // fetchResumes()
-  }, [user._id])
-
+  // Move hooks above any return
   const form = useForm<IData>({
     resolver: zodResolver(resumeTitleSchema),
     defaultValues: { name: '' }
   })
+
+  useEffect(() => {
+    if (!session?.user?._id) return;
+    const fetchResumes = async () => {
+      const response = await getAllResume(session.user._id!)
+      setResumeList(response.resumeList || [])
+    }
+    fetchResumes()
+  }, [session?.user?._id])
+
+  // If session is not loaded yet, render nothing (or a loader if you want)
+  if (!session) return null
 
   const onSubmit = async (data: IData) => {
     setResumeData(prev => ({ ...prev, title: data.name }))

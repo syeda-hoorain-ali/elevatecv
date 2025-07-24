@@ -2,7 +2,7 @@ import mongoose, { Schema, type Document } from "mongoose"
 import { type IResume } from "@/types/data";
 
 interface Resume extends Document, IResume {
-    _id: any;
+    _id: string;
     image: string;
 }
 

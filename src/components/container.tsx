@@ -8,42 +8,42 @@ import TemplateCard from './template-card';
 
 const Container = () => {
 
+  const [loading, setLoading] = useState(true)
   const [templates, setTemplates] = useState<ITemplate[]>([])
 
   useEffect(() => {
     const fetchTemplates = async () => {
+      setLoading(true)
       const templates = await getTemplates();
-      setTemplates(templates);
+      setTemplates(templates.reverse());
+      setLoading(false)
     }
-    // fetchTemplates()
+    fetchTemplates()
   }, [])
 
   return (
-    <div className="max-w-screen-lg mx-auto flex flex-wrap gap-4 overflow-x-hidden">
-
+    <div className="max-w-screen-xl mx-auto px-14 overflow-x-hidden">
       <Carousel
-        className="w-full"
-        opts={{
-          align: "start",
-          loop: true,
-        }}
+        className="max-w-5xl relative mx-20"
+        opts={{ align: "start", loop: true }}
       >
-
-        <CarouselContent className='py-4'>
-          {templates.map(item => (
-            <CarouselItem className="md:basis-1/2 lg:basis-1/4" key={item.id}>
-              <TemplateCard id={item.id} image={item.image} name={item.name} isPaid={item.isPaid} />
+        <CarouselContent className='py-4 mx-3 max-h-[24rem]'>
+          {loading && Array.from({ length: 8 }).map((_, i) => (
+            <CarouselItem className="basis-auto" key={i}>
+              <div className='bg-slate-400 h-96 w-56 rounded-sm shadow-md animate-pulse'></div>
             </CarouselItem>
           ))}
 
-          {/* <CarouselItem className="md:basis-1/2 lg:basis-1/4"><Card /></CarouselItem> */}
+          {templates.map(item => (
+            <CarouselItem className="basis-auto" key={item.id}>
+              <TemplateCard template={item} />
+            </CarouselItem>
+          ))}
         </CarouselContent>
 
         <CarouselPrevious />
         <CarouselNext />
-
       </Carousel>
-
     </div>
   )
 }

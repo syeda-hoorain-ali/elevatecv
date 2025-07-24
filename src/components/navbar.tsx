@@ -14,7 +14,6 @@ const Navbar = () => {
 
   const { data: session } = useSession()
   const user: User = session?.user;
-  console.log(user)
 
   const links = [
     { text: 'Templates', href: '/templates' },
@@ -27,9 +26,9 @@ const Navbar = () => {
     <nav className='bg-white shadow-lg w-screen py-4 px-8 fixed top-0 z-50 print:hidden'>
       <div className="max-w-screen-2xl mx-auto flex items-center justify-between">
 
-        <Link href='/' className="drop-shadow-xl flex items-center">
+        <Link href='/' className="drop-shadow-xl flex gap-1 items-center">
           <Image src="/logo-purple.png" alt="" width={40} height={40} />
-          <span className="text-primary font-bold text-xl italic drop-shadow-xl">
+          <span className="text-primary font-black text-2xl italic drop-shadow-xl">
             ElevateCV
           </span>
         </Link>

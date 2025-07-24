@@ -32,7 +32,7 @@ const Page = ({ params }: IProps) => {
     }
 
     fetchResumeData()
-  }, [params])
+  }, [params, setResumeData])
 
   if (loading) return <p>Loading...</p>
   if (error) return notFound()

@@ -6,7 +6,8 @@ export const dynamic = "force-dynamic"
 export const POST = async (resuest: NextRequest) => {
     try {
 
-        // const { plan } = await resuest.json()
+        const { plan } = await resuest.json()
+        console.log(plan)
         // monthly 412362
         // yearly 412413
 
@@ -22,20 +23,19 @@ export const POST = async (resuest: NextRequest) => {
         try {
             // const response = await apiInstense.get("/products/412362")
             const response = await apiInstense.get("/products/subscriptions")
-            console.log(response.data);
             return NextResponse.json({...response.data}, { status: 200 })
        
        
         } catch (error) {
             const err = error as Error
-            console.log("number 1", error)
+            console.error(error)
             return NextResponse.json({ success: false, message: err.message }, { status: 500 })
         }
 
 
     } catch (error) {
         const err = error as Error
-        console.log("number 2", error)
+        console.error(error)
         return NextResponse.json({ success: false, message: err.message }, { status: 500 })
     }
 }
@@ -46,6 +46,7 @@ export const DELETE = async (resuest: NextRequest) => {
         const { userId } = await resuest.json()
         // monthly 412362
         // yearly 412413
+        console.log(userId)
 
         const apiInstense = axios.create({
             baseURL: "https://api.lemonsqueezy.com/v1/",
@@ -59,20 +60,19 @@ export const DELETE = async (resuest: NextRequest) => {
         try {
             // const response = await apiInstense.get("/products/412362")
             const response = await apiInstense.get("/products/subscriptions")
-            console.log(response.data);
             return NextResponse.json({...response.data}, { status: 200 })
        
        
         } catch (error) {
             const err = error as Error
-            console.log("number 1", error)
+            console.error(error)
             return NextResponse.json({ success: false, message: err.message }, { status: 500 })
         }
 
 
     } catch (error) {
         const err = error as Error
-        console.log("number 2", error)
+        console.error(error)
         return NextResponse.json({ success: false, message: err.message }, { status: 500 })
     }
 }

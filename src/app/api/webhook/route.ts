@@ -3,24 +3,24 @@ import { getUserMembership } from "@/lib/utils";
 import UserModel from "@/models/User";
 import { NextRequest, NextResponse } from "next/server";
 
-interface IPayment {
-    id: string;
-    links: { self: string; };
-    attributes: {
-        urls: any;
-        status: string;
-        refunded: false;
-        user_email: string;
-        created_at: string; // Date
-        updated_at: string; // Date
-    }
-}
+// interface IPayment {
+//     id: string;
+//     links: { self: string; };
+//     attributes: {
+//         urls: any;
+//         status: string;
+//         refunded: false;
+//         user_email: string;
+//         created_at: string; // Date
+//         updated_at: string; // Date
+//     }
+// }
 
 interface IData {
     id: string;
     links: { self: string; };
     attributes: {
-        urls: any;
+        urls: Record<string, unknown>;
         status: 'on_trial' | 'active' | 'paused' | 'past_due' | 'unpaid' | 'cancelled' | 'expired';
         cancelled: false;
         renews_at: Date;
@@ -40,13 +40,10 @@ export const POST = async (request: NextRequest) => {
         const { data }: { data: IData } = await request.json()
         const user = await UserModel.findOne({ email: data.attributes.user_email });
 
-        console.log(data)
-
-        if (!user)
-            return NextResponse.json({
-                succes: false,
-                message: "User not found"
-            }, { status: 404 });
+        if (!user) return NextResponse.json({
+            succes: false,
+            message: "User not found"
+        }, { status: 404 });
 
 
         user.membership = getUserMembership(data.attributes.status, data.attributes.product_id);
@@ -62,7 +59,7 @@ export const POST = async (request: NextRequest) => {
         }, { status: 200 })
 
     } catch (error) {
-        console.log(error)
+        console.error(error)
         return NextResponse.json({
             succes: false,
             message: (error as Error).message

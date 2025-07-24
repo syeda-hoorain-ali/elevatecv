@@ -11,7 +11,6 @@ import { Loader2Icon, PlusIcon, Trash2Icon } from "lucide-react"
 import { ISkill } from "@/types/data"
 import { skillsSchema } from "@/schema/skillsSchema"
 import { Rating as ReactRating } from '@smastrom/react-rating'
-import { addResume } from "@/lib/userActions"
 import { useSession } from "next-auth/react"
 import * as z from "zod"
 
@@ -28,7 +27,7 @@ const skill: ISkill = {
 const Skills = () => {
   type IData = z.infer<typeof skillsSchema>
 
-  const { resumeData, setResumeData, setResumeId, setStep, saveResume } = useResume()
+  const { resumeData, setResumeData, setStep, saveResume } = useResume()
   const { data: session } = useSession()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 

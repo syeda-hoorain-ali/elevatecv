@@ -1,7 +1,7 @@
 "use clinet";
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { toast } from "react-toastify"
+import { toast } from "react-hot-toast"
 import { ChangeEvent, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import Image from "next/image"
@@ -89,9 +89,7 @@ const PersonalDetails = () => {
 
     if (typeof resumeData.image !== 'string') {
       const imageName = `resume-builder/users/${resumeData.name.toLowerCase().replaceAll(' ', '-')}-${Math.round(Math.random() * 1000)}`;
-
       const response = await uploadImage(resumeData.image, imageName)
-      console.log(response);
 
       if (!response.success || !response.imageUrl) {
         toast.error("Error saving image")

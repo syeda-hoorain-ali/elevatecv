@@ -6,31 +6,18 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { complain } from '@/lib/data';
-import { client } from '@/sanity/lib/client';
 import { contactSchema } from '@/schema/contactSchema';
-import { IPage } from '@/types/sanity';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2Icon } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import * as z from "zod";
 
 const ContactUs = () => {
-
   type Contact = z.infer<typeof contactSchema>
 
   const [isSubmittingForm, setIsSubmittingForm] = useState<boolean>(false)
-  const [data, setData] = useState<IPage>({ heading: '', paragraph: '' })
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data =  await client.fetch<IPage>("*[_type == 'contactPage']{heading,paragraph}[0]");
-      setData(data)      
-    }
-    fetchData()
-  }, [])
-
 
   const form = useForm<Contact>({
     resolver: zodResolver(contactSchema),
@@ -57,21 +44,21 @@ const ContactUs = () => {
     <div className="flex justify-center items-center min-h-screen py-6">
       <div className="w-full max-w-lg p-8 space-y-8 bg-white rounded-lg shadow-md">
         <div className="text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">{data.heading}</h1>
-          <p className="mb-4">{data.paragraph}</p>
+          <h1 className="text-3xl font-bold tracking-tight lg:text-4xl mb-2">Contact Us</h1>
+          <p className="mb-4">
+            Have a question or want to work with us? Fill out the form below and we&apos;ll get back to you soon.
+          </p>
         </div>
 
         <Form {...form}>
-
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-
+            
             <div className='flex gap-6'>
-
               <FormField
                 name="firstName"
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className='w-full'>
                     <Label>First Name</Label>
                     <FormControl>
                       <Input {...field} />
@@ -85,7 +72,7 @@ const ContactUs = () => {
                 name="lastName"
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className='w-full'>
                     <Label>Last Name</Label>
                     <FormControl>
                       <Input {...field} />
@@ -144,7 +131,6 @@ const ContactUs = () => {
             </Button>
           </form>
         </Form>
-
 
       </div>
     </div>

@@ -23,8 +23,7 @@ const Summary = () => {
   const { resumeData, setResumeData, setStep, saveResume } = useResume()
   const { data: session } = useSession()
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [summary, setSummary] = useState<string>('')
-  const [aiSummaryList, setAiSummaryList] = useState<AiSummary[]>([])
+  const [, setAiSummaryList] = useState<AiSummary[]>([])
 
   const form = useForm<IData>({
     resolver: zodResolver(summarySchema),
@@ -40,7 +39,6 @@ const Summary = () => {
 
     const response = await askGemini(prompt)
     const data = response.replace('```json', '').replace('```', '')
-    console.log(JSON.parse(data))
     setAiSummaryList(JSON.parse(data))
     setIsLoading(false)
   }

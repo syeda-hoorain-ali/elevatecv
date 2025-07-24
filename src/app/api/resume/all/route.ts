@@ -40,7 +40,7 @@ export const GET = async (request: NextRequest) => {
         }, { status: 200 })
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         const err = error as Error
 
         return NextResponse.json<IApiResponse>({
